@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="{{ server_name }} registration" property="og:title">
+    <meta content="{{ server_name }}" property="og:site_name">
+    <meta content="website" property="og:type"/>
+    <meta content="registrate an account on {{ server_name }}" name="og:description"/>
+    <meta content="images/icon.png" name="og:image"/>
+    <link href="images/icon.png" rel="apple-touch-icon" sizes="180x180">
+    <link href="images/icon32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <link href="images/favicon.ico" rel="shortcut icon">
+    <meta content="images/tile.png" name="msapplication-TileImage">
+    <meta content="#fff" name="msapplication-TileColor">
+    <title>matrix registration</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/googleNunito.css" rel="stylesheet">
+</head>
+
+<body class="blur">
+<article class="widget register">
+    <div class="center">
+        <header>
+            <h1>matrix registration</h1>
+            <p>the registration requires a secret token<br>
+                registration does not require an email, just a username and a password without white spaces.</p>
+        </header>
+        <section>
+            <form action="/registration" id="submitForm" method="post">
+                <div class="group">
+                    <input id="username" maxlength="200" minlength="1" name="username" pattern="^[a-z0-9]+$"
+                           placeholder=" " required
+                           type="text" onkeyup="return cleanForMatrix(this);">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="username">Username</label>
+                </div>
+                <div class="group">
+                    <input id="password" maxlength="128" minlength="{{ pw_length }}" name="password" placeholder=" "
+                           required
+                           type="password">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="password">Password</label>
+                </div>
+                <div class="group">
+                    <input id="passwordConfirmation" name="passwordConfirmation" placeholder=" " required
+                           type="password">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="passwordConfirmation">Password Confirmation</label>
+                </div>
+                <div class="group">
+                    <input id="token" name="token" pattern="^([A-Za-z0-9]+)+$" placeholder=" " required type="text">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label for="token">Token</label>
+                </div>
+                <div class="btn-box">
+                    <input class="btn btn-submit" type="submit" value="register">
+                </div>
+            </form>
+        </section>
+    </div>
+</article>
+<article class="widget modal hidden" id="success">
+    <div class="center">
+        <header>
+            <h2 id="welcome"></h2>
+        </header>
+        <section>
+            <p>Click here to login in:</p>
+            <h3><a href="https://riot.trustserv.de"><img height="50px" src="images/riot.png"></a></h3>
+            <p>or choose one of the many other clients here: <a href="https://matrix.org/docs/projects/clients-matrix">https://matrix.org/docs/projects/clients-matrix</a>
+            </p>
+        </section>
+    </div>
+</article>
+<article class="widget modal hidden" id="error">
+    <div class="center">
+        <header>
+            <h2>Error</h2>
+        </header>
+        <section>
+            <p>There was an error while trying to register you.</p>
+            <h3 class="error" id="error_message"></h3>
+            <p id="error_dialog"></p>
+        </section>
+    </div>
+</article>
+<footer class="info">
+    <p>Cover photo by: <a href="https://www.flickr.com/golan" target="_blank">Jesús Roncero</a>,<br>
+        used under the terms of <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA
+            4.0</a>. No warranties are given.
+    </p>
+</footer>
+
+<script src="functions.js"></script>
+</body>
+
+</html>
