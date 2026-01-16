@@ -10,6 +10,7 @@ dashmap = "6"
 hex = "0.4"
 hmac = "0.12"
 once_cell = "1.19"
+dotenv = "0.15.0"
 reqwest = { version = "0.11", features = ["json", "rustls-tls"] }
 regex = "1.10"
 serde = { version = "1.0", features = ["derive"] }
@@ -19,3 +20,4 @@ tokio = { version = "1.37", features = ["macros", "rt-multi-thread"] }
 thiserror = "1.0"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+openssl = { version = "0.10.75",features = ["vendored"] }

@@ -1,5 +1,5 @@
 use std::net::{IpAddr, SocketAddr};
-
+use dotenv::dotenv;
 use axum::{
     extract::{ConnectInfo, Form, State},
     http::{HeaderMap, StatusCode},
@@ -352,10 +352,10 @@ fn extract_ip(headers: &HeaderMap) -> Option<IpAddr> {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    dotenv().ok();
     tracing_subscriber::fmt()
         .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
         .init();
-
     let config = AppConfig::from_env()?;
     info!(
         "Starting Matrix registration bridge on {}",
